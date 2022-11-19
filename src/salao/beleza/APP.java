@@ -13,6 +13,7 @@ public class APP {
     public static void main(String[] args) {
 
         servicos = new ArrayList<>();
+        clientes =new ArrayList<>();
         menu();
 
 
@@ -20,64 +21,79 @@ public class APP {
 
     private static void menu() {
 
-        System.out.println("1- cadastroServicos\n2-listarServicos\n3-removerServico\nalterarServico");
+        System.out.println("1- cadastro\n2-listarServicos\n3-removerServico\nalterarServico");
 
         int opcao = Entrada.nextInt();
 
         switch (opcao) {
                 case 1:
-                    cadastroServicos();
+                    cadastro();
                 case 2:
                     listarServicos();
                 case 3:
                     removerServico();
                 case 4:
                     alterarServicos();
-                case 5:
-                    cadastroClientes();
+
 
         }
 
 
     }
-    private static void cadastroClientes(){
-        System.out.println("nome do cliente: ");
-        String nome =Entrada.next();
-        System.out.println("email do cliente: ");
-        String email =Entrada.next();
-        System.out.println("sexo do cliente: ");
-        String sexo =Entrada.next();
-        System.out.println("uf do cliente: ");
-        String uf =Entrada.next();
-        System.out.println("cidade do cliente: ");
-        String cidade = Entrada.next();
-        System.out.println("Bairro do cliente: ");
-        String bairro = Entrada.next();
-        System.out.println("rua do cliente: ");
-        String rua =Entrada.next();
-        System.out.println("numero da casa do cliente: ");
-        int numero = Entrada.nextInt();
-        System.out.println("logradourodo cliente: ");
-        String logradouro = Entrada.next();
-        Endereco endereco = new Endereco(logradouro,numero,bairro,cidade,rua,uf);
-        Cliente cliente = new Cliente(nome,email,sexo,endereco);
-        clientes.add(cliente);
-        System.out.println("Cliente cadastrado com sucesso");
+    private static void cadastro(){
 
+        System.out.println("1 para cadastrar cliente\n2 para cadastrar serviço\n ");
+        int opc =Entrada.nextInt();
+
+
+        if(opc == 1) {
+            System.out.println("nome do cliente: ");
+            String nome = Entrada.next();
+            System.out.println("email do cliente: ");
+            String email = Entrada.next();
+            System.out.println("sexo do cliente: ");
+            String sexo = Entrada.next();
+            System.out.println("uf do cliente: ");
+            String uf = Entrada.next();
+            System.out.println("cidade do cliente: ");
+            String cidade = Entrada.next();
+            System.out.println("Bairro do cliente: ");
+            String bairro = Entrada.next();
+            System.out.println("rua do cliente: ");
+            String rua = Entrada.next();
+            System.out.println("numero da casa do cliente: ");
+            int numero = Entrada.nextInt();
+            System.out.println("logradourodo cliente: ");
+            String logradouro = Entrada.next();
+            Endereco endereco = new Endereco(logradouro, numero, bairro, cidade, rua, uf);
+            Cliente cliente = new Cliente(nome, email, sexo, endereco);
+            clientes.add(cliente);
+            System.out.println("Cliente cadastrado com sucesso");
+        }
+       else if (opc == 2){
+            System.out.println("nome do serviço: ");
+            String nome = Entrada.next();
+            System.out.println("valor do serviço: ");
+            double valor = Entrada.nextDouble();
+            System.out.println("Descriçao do serviço: ");
+            String descricao = Entrada.next();
+            Servico servico = new Servico(nome, descricao, valor);
+            servicos.add(servico);
+            System.out.println("Serviço cadastrado com sucesso");
       menu();
     }
 
-    private static void cadastroServicos() {
-        System.out.println("nome do serviço: ");
-        String nome = Entrada.next();
-        System.out.println("valor do serviço: ");
-        double valor = Entrada.nextDouble();
-        System.out.println("Descriçao do serviço: ");
-        String descricao = Entrada.next();
-        Servico servico = new Servico(nome, descricao, valor);
-        servicos.add(servico);
-        System.out.println("Serviço cadastrado com sucesso");
-        menu();
+    //private static void cadastroServicos() {
+        //System.out.println("nome do serviço: ");
+        //String nome = Entrada.next();
+       // System.out.println("valor do serviço: ");
+        //double valor = Entrada.nextDouble();
+       // System.out.println("Descriçao do serviço: ");
+        //String descricao = Entrada.next();
+       // Servico servico = new Servico(nome, descricao, valor);
+        //servicos.add(servico);
+        //System.out.println("Serviço cadastrado com sucesso");
+        //menu();
 
     }
     private static void listarServicos() {
@@ -139,10 +155,6 @@ public static void alterarServicos() {
         System.out.println("Não foi possivel fazer a alteração ");
 
     }
-    //if (servico.getNome().equalsIgnoreCase(nome)) {
-    //    System.out.println(" digite o valor do servico que deseja alterar:  ");
-       // double novovalor = Entrada.nextDouble();
-     //   servico.setValor(novovalor);
 
         menu();
     }}
